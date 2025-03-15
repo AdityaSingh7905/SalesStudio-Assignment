@@ -38,9 +38,11 @@ export default function Coupon() {
     }
   }, [timeRemaining]);
 
+  const API = process.env.NEXT_API_PUBLIC_URL || "http://localhost:8000";
+
   // Claim Coupon Handler
   const claimCoupon = async () => {
-    const res = await fetch("http://localhost:8000/api/coupons/claim", {
+    const res = await fetch(`${API}/api/coupons/claim`, {
       method: "POST",
       credentials: "include", // Ensures session-based identification
     });
