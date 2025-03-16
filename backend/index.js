@@ -14,7 +14,12 @@ const PORT = process.env.PORT || 5000;
 mongoConnect();
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://sales-studio-assignment-alpha.vercel.app", // Use your frontend URL
+    credentials: true, // Allows cookies and session data
+  })
+);
 app.use(cookieParser());
 
 app.use("/api/coupons", couponRouter);
